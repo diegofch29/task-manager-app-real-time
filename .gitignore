@@ -30,5 +30,4 @@ yarn-error.log*
 Thumbs.db
 
 # Package manager
-package-lock.json
 yarn.lock
