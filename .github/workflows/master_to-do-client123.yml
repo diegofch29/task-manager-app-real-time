@@ -30,6 +30,8 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
           npm install
           CI=false npm run build  # CI=false prevents treating warnings as errors
         env:
