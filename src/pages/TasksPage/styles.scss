@@ -3,12 +3,12 @@ $border-color: var(--border-color);
 
 .task-page-container {
   padding: 20px;
+  font-family: "Comic Relief";
+
   .tasks-container {
     display: grid;
-    font-family: "Comic Relief";
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr 1fr 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
     padding: 20px;
   }
 
@@ -29,5 +29,10 @@ $border-color: var(--border-color);
         cursor: pointer;
       }
     }
+  }
+
+  .no-tasks-message {
+    width: 100%;
+    text-align: center;
   }
 }

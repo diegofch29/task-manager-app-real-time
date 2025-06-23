@@ -16,6 +16,7 @@ import { clearTask } from "../../features/reducers/TaskReducer";
 import { useTaskLockSignalR } from "../../hooks/useTaskLockSignalR";
 
 function TasksPage() {
+  console.log("TasksPage Rendered");
   const dispatch = useDispatch();
   const selectedteam = useSelector(
     (state: RootState) => state.team.currentTeam
@@ -48,20 +49,32 @@ function TasksPage() {
         .then((tasks) => {
           setTasks(tasks);
         })
+        .catch((error) => {
+          console.error("Failed to fetch tasks:", error);
+        })
         .finally(() => {
           dispatch(stopLoading());
         });
     } else {
       navigate(-1);
     }
-  }, [selectedteam?.id, dispatch, navigate]);
+  }, [selectedteam?.id, dispatch]);
 
   useEffect(() => {
-    if (isLocked !== null) {
+    console.log("TasksPage useEffect called");
+    if (selectedteam?.id) {
       fetchTasks();
+    } else {
+      navigate(-1);
+    }
+  }, [selectedteam?.id, isLocked, fetchTasks]);
+
+  useEffect(() => {
+    if (isLocked) {
+      setEnableCreateTask(false);
       unlockTask();
     }
-  }, [isLocked, unlockTask, fetchTasks]);
+  }, [isLocked, fetchTasks, unlockTask]);
 
   function handleTaskCreationState() {
     setEnableCreateTask(!enableCreateTask);
@@ -70,12 +83,6 @@ function TasksPage() {
   function handleDismiss() {
     dispatch(clearTask());
   }
-
-  useEffect(() => {
-    if (selectedteam?.id && !selectedTask) {
-      fetchTasks();
-    }
-  }, [selectedTask, selectedteam, fetchTasks]);
 
   return (
     <div className="task-page-container">
@@ -109,6 +116,11 @@ function TasksPage() {
           />
         ))}
       </div>
+      {tasks.length === 0 && (
+        <div className="no-tasks-message">
+          No tasks available. Please create a task.
+        </div>
+      )}
     </div>
   );
 }

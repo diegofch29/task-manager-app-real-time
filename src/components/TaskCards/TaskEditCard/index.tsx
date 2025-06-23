@@ -164,6 +164,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
       }}
     >
       <Field
+        className="task-fields"
         label="Title:"
         validationState={`${
           showErrorValidation(updatedTask?.title) ? "error" : "none"
@@ -182,6 +183,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
         />
       </Field>
       <Field
+        className="task-fields"
         label="Description:"
         validationState={`${
           showErrorValidation(updatedTask?.description) ? "error" : "none"
@@ -204,6 +206,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
       </Field>
       <div className="dropdown-container">
         <Field
+          className="task-fields"
           label="Status"
           validationState={`${
             showErrorValidation(updatedTask?.status) ? "error" : "none"
@@ -224,6 +227,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
           </Dropdown>
         </Field>
         <Field
+          className="task-fields"
           label="Due Date:"
           validationState={`${
             showErrorValidation(updatedTask?.dueDate) ? "error" : "none"
