@@ -17,6 +17,9 @@
     },
     {
       "route": "Marketing/tasks"
+    },
+    {
+      "route": "Design/tasks"
     }
   ]
 }
