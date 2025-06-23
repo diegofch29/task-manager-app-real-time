@@ -4,7 +4,8 @@
       "route": "/Development/tasks",
       "methods": [
         "get"
-      ]
+      ],
+      "redirect": "/Development/tasks"
     },
     {
       "route": "/Marketing/tasks"
