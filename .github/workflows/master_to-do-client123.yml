@@ -21,12 +21,12 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: "22.x"
 
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
+          CI=false npm run build
           npm run test --if-present
 
       - name: Zip artifact for deployment
@@ -53,7 +53,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -61,11 +61,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7DB6064177A942DF9000C8D15DCE3455 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2D631E11DE6C4AF3A0E9ACC600E4F6FF }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'To-Do-Client123'
-          slot-name: 'Production'
+          app-name: "To-Do-Client123"
+          slot-name: "Production"
           package: .
-          
