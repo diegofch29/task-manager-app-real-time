@@ -147,7 +147,6 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
   }
 
   useEffect(() => {
-    console.log("Form error:", formError);
     if (formError) {
       dispatch(showNotification({ message: formError, type: "error" }));
       setFormError(null);
@@ -164,7 +163,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
       }}
     >
       <Field
-        className="task-fields"
+        className="task-field"
         label="Title:"
         validationState={`${
           showErrorValidation(updatedTask?.title) ? "error" : "none"
@@ -183,7 +182,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
         />
       </Field>
       <Field
-        className="task-fields"
+        className="task-field"
         label="Description:"
         validationState={`${
           showErrorValidation(updatedTask?.description) ? "error" : "none"
@@ -206,7 +205,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
       </Field>
       <div className="dropdown-container">
         <Field
-          className="task-fields"
+          className="dropdown-field"
           label="Status"
           validationState={`${
             showErrorValidation(updatedTask?.status) ? "error" : "none"
@@ -216,8 +215,9 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
           }
         >
           <Dropdown
+            className="dropdown-status"
+            size="medium"
             defaultValue={updatedTask?.status?.name}
-            onOptionSelect={onOptionSelect}
           >
             {(statusList ?? []).map((status) => (
               <Option key={status.id} value={status.name} text={status.name}>
@@ -227,7 +227,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
           </Dropdown>
         </Field>
         <Field
-          className="task-fields"
+          className="task-field"
           label="Due Date:"
           validationState={`${
             showErrorValidation(updatedTask?.dueDate) ? "error" : "none"
@@ -237,6 +237,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
           }
         >
           <DatePicker
+            className="task-field"
             value={
               updatedTask?.dueDate ? new Date(updatedTask?.dueDate) : undefined
             }

@@ -1,4 +1,3 @@
 {
-  "appService.defaultWebAppToDeploy": "/subscriptions/d25847c2-3268-4ae3-9c08-392cde1e4f4b/resourceGroups/rg-to-do-app/providers/Microsoft.Web/sites/To-Do-Client2",
-  "appService.deploySubpath": "."
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"]
 }

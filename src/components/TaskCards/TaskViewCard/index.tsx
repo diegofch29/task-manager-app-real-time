@@ -58,9 +58,7 @@ function TaskViewCard({ task, fetchTasks }: props) {
     <div className="task-view-container">
       <div className="information-container">
         <div className="task-title">{task.title}</div>
-        <Text wrap={false} className="task-description">
-          {task.description}
-        </Text>
+        <div className="task-description">{task.description}</div>
         <div className="task-due-date">
           {task.dueDate ? require("moment")(task.dueDate).format("LL") : ""}
         </div>

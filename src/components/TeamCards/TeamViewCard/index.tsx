@@ -13,7 +13,6 @@ function TeamViewCard({ team }: props) {
   const dispatch = useDispatch();
 
   function handleTeamSelection() {
-    console.log(team);
     dispatch(setTeam(team));
     navigate(`/${team.name}/tasks`);
   }

@@ -22,17 +22,12 @@ export const useTaskLockSignalR = ({ teamId }: UseTaskLockSignalRProps) => {
 
     const startConnection = async () => {
       try {
-        console.log("Connecting to SignalR hub at:", hubUrl);
         await hubConnection.start();
         setConnection(hubConnection);
         setError(null);
 
         // Subscribe to task lock updates
         hubConnection.on(`TaskChanged_${teamId}`, (lockState: boolean) => {
-          console.log(
-            `Received task lock update for team ${teamId}:`,
-            lockState
-          );
           setIsLocked(true);
         });
 

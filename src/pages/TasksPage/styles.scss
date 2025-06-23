@@ -8,8 +8,9 @@ $border-color: var(--border-color);
   .tasks-container {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
     padding: 20px;
+    justify-items: center;
   }
 
   .create-task-section {

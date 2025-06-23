@@ -16,7 +16,6 @@ import { clearTask } from "../../features/reducers/TaskReducer";
 import { useTaskLockSignalR } from "../../hooks/useTaskLockSignalR";
 
 function TasksPage() {
-  console.log("TasksPage Rendered");
   const dispatch = useDispatch();
   const selectedteam = useSelector(
     (state: RootState) => state.team.currentTeam
@@ -55,16 +54,12 @@ function TasksPage() {
         .finally(() => {
           dispatch(stopLoading());
         });
-    } else {
-      navigate(-1);
     }
   }, [selectedteam?.id, dispatch, navigate]);
 
   useEffect(() => {
     if (selectedteam?.id && tasks.length === 0) {
       fetchTasks();
-    } else if (!selectedteam?.id) {
-      navigate(-1);
     }
   }, [selectedteam?.id, isLocked, fetchTasks, navigate, tasks.length]);
 
