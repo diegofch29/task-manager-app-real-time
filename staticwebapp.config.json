@@ -20,6 +20,9 @@
     },
     {
       "route": "Design/tasks"
+    },
+    {
+      "route": "HR/tasks"
     }
   ]
 }
