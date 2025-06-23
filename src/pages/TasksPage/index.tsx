@@ -46,7 +46,7 @@ function TasksPage() {
       fetchTasks();
       unlockTask();
     }
-  }, [isLocked]);
+  }, [isLocked, unlockTask, fetchTasks]);
 
   function fetchTasks() {
     if (selectedteam?.id) {
