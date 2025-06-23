@@ -41,7 +41,6 @@ function TasksPage() {
   }, [lockError]);
 
   useEffect(() => {
-    console.log("Task lock state changed:", isLocked);
     if (isLocked !== null) {
       fetchTasks();
       unlockTask();
@@ -76,7 +75,7 @@ function TasksPage() {
     if (selectedteam?.id && !selectedTask) {
       fetchTasks();
     }
-  }, [selectedTask]);
+  }, [selectedTask, selectedteam, selectedTask]);
 
   return (
     <div className="task-page-container">

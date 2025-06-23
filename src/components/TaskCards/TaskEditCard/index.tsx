@@ -152,7 +152,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
       dispatch(showNotification({ message: formError, type: "error" }));
       setFormError(null);
     }
-  }, [formError]);
+  }, [formError, dispatch]);
 
   return (
     <form

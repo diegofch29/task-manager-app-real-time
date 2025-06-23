@@ -3,7 +3,6 @@ import "./styles.scss";
 import { useNavigate } from "react-router-dom";
 import { setTeam } from "../../../features/reducers/TeamReducer";
 import { useDispatch } from "react-redux";
-import { Button } from "@fluentui/react-components";
 
 interface props {
   team: ITeam;
@@ -30,7 +29,10 @@ function TeamViewCard({ team }: props) {
         </span>
       </div>
       <div className="team-name">{team.name}</div>
-      <a className="app-link">{`View ${team.name} tasks`}</a>
+      <a
+        href={`/${team.name}/tasks`}
+        className="app-link"
+      >{`View ${team.name} tasks`}</a>
     </div>
   );
 }
