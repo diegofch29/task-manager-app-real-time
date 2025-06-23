@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - task-app
 
 on:
@@ -13,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -22,14 +19,28 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20.x"
+          cache: "npm"
 
-      - name: npm install, build, and test
+      - name: Clean install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --coverage --passWithNoTests
+
+      - name: Build React app
         run: |
-          npm install
           CI=false npm run build
+        env:
+          NODE_ENV: production
+          GENERATE_SOURCEMAP: false
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: Create deployment package
+        run: |
+          mkdir deployment-package
+          cp server.js deployment-package/
+          cp package*.json deployment-package/
+          cp -r build deployment-package/
+          cd deployment-package && zip -r ../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -41,8 +52,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
@@ -59,6 +70,9 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_60F6EDCDDB3F4727B2023B059877C0F3 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2FAD66320610483481BBCDCC90BC6C46 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6F19826E7C8142A6B014FC9A6995806B }}
+
+      - name: Install production dependencies
+        run: npm ci --only=production
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
