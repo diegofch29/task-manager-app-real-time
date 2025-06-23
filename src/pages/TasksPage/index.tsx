@@ -66,7 +66,7 @@ function TasksPage() {
     } else if (!selectedteam?.id) {
       navigate(-1);
     }
-  }, [selectedteam?.id, isLocked, fetchTasks, navigate]);
+  }, [selectedteam?.id, isLocked, fetchTasks, navigate, tasks.length]);
 
   useEffect(() => {
     if (isLocked) {
