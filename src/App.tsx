@@ -1,18 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/LandingPage/LandingPage";
-import TasksPage from "./pages/TasksPage/TasksPage";
+import LandingPage from "./pages/LandingPage";
+import TasksPage from "./pages/TasksPage";
+import Header from "./components/Header";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import CustomSpinner from "./components/CustomSpinner";
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
+import Notification from "./components/Notification";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="tasks" element={<TasksPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <Header />
+      <FluentProvider theme={webLightTheme}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path=":team/tasks" element={<TasksPage />} />
+            </Routes>
+          </BrowserRouter>
+          <Notification />
+          <CustomSpinner />
+        </Provider>
+      </FluentProvider>
+    </div>
   );
 }
 

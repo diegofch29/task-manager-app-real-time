@@ -1,13 +1,44 @@
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: "Comic Relief", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --primary-color: #3b3b1a;
+  --secondary-color: #363614;
+  --accent-color: #15b5b0;
+  --background-color: #aec8a4;
+  --text-color: #212121;
+  --border-color: #6e6d6e;
+  --action-ok: #10b981;
+  --action-wrong: #ef4444;
+  --action-neutral: #3b82f6;
+  --action-warning: #f59e0b;
+  --action-info: #6366f1;
+  --action-disabled: #9ca3af;
+
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100% !important;
+  width: 100% !important;
+  background-color: white;
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+.app-link {
+  color: var(--accent-color);
+}
+
+.icon {
+  font-size: 30pt;
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" -25, "opsz" 48;
 }

@@ -1,0 +1,33 @@
+$action-ok: var(--action-ok);
+$border-color: var(--border-color);
+
+.task-page-container {
+  padding: 20px;
+  .tasks-container {
+    display: grid;
+    font-family: "Comic Relief";
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr 1fr 1fr));
+    padding: 20px;
+  }
+
+  .create-task-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .create-icon-button {
+      border: solid $action-ok 1pt;
+      border-radius: 10pt;
+      color: $action-ok;
+      font-size: 40pt;
+      font-variation-settings: "FILL" 1, "wght" 700, "GRAD" -25, "opsz" 48;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        cursor: pointer;
+      }
+    }
+  }
+}

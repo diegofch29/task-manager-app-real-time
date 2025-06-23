@@ -1,0 +1,14 @@
+.notification-container {
+  position: fixed;
+  width: -webkit-fill-available;
+  top: 0;
+  transition: visibility ease-in-out 0.5s;
+
+  &.visible {
+    visibility: visible;
+  }
+
+  &.hidden {
+    visibility: collapse;
+  }
+}

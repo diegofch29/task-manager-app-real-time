@@ -1,0 +1,58 @@
+.task-container {
+  display: grid;
+
+  align-items: start;
+  border-radius: 5pt;
+  border: solid 2pt;
+  grid-template-areas: "task-title" "task-description" "task-buttons";
+  padding: 10pt;
+  gap: 5pt;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  vertical-align: top;
+
+  .task-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5pt;
+
+    .task-button {
+      width: 100%;
+      height: 30pt;
+      border-radius: 5pt;
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      font-size: 12pt;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--action-hover);
+      }
+    }
+
+    .save-button {
+      background-color: var(--action-ok);
+      color: var(--primary-color);
+    }
+
+    .cancel-button {
+      background-color: var(--action-wrong);
+      color: var(--primary-color);
+    }
+  }
+
+  .dropdown-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5pt;
+
+    .status-dropdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.header-container {
+  $primary-color: var(--primary-color);
+  $background-color: var(--background-color);
+
+  background-color: $background-color;
+  color: $primary-color;
+  font-size: 20pt;
+  font-weight: 700;
+  padding: 20pt 0;
+  width: -webkit-fill-available;
+  .header-title {
+    padding: 0 20pt;
+  }
+}

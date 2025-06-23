@@ -1,0 +1,14 @@
+.status-card {
+  align-items: center;
+  border-radius: 10pt;
+  display: flex;
+  justify-content: center;
+  padding: 5pt;
+
+  .status-name {
+    color: var(--secondary-color);
+    font-size: 10pt;
+    font-weight: 700;
+    text-align: center;
+  }
+}

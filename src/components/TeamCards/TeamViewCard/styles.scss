@@ -1,0 +1,32 @@
+.team-container {
+  $primary-color: var(--primary-color);
+  $text-color: var(--text-color);
+  $border-color: var(--border-color);
+  $action-neutral: var(--action-neutral);
+
+  align-items: center;
+  border-radius: 5pt;
+  border: solid 2px $border-color;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  width: 200pt;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $action-neutral 0px 0px 10px;
+    transform: translateY(-5pt) scale(1.1, 1.1);
+  }
+
+  .team-icon {
+    font-size: 30pt;
+    font-variation-settings: "FILL" 1, "wght" 700, "GRAD" -25, "opsz" 48;
+  }
+
+  .team-name {
+    color: $text-color;
+    font-size: 20pt;
+  }
+}
