@@ -19,7 +19,7 @@ function LandingPage() {
     configService.GetStatusList().then((statusList) => {
       dispatch(setStatusList(statusList));
     });
-  }, [configService]);
+  }, [configService, dispatch]);
 
   return (
     <div className="landing-container">

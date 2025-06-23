@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { TaskService } from "../../services/TaskService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -40,14 +40,7 @@ function TasksPage() {
     }
   }, [lockError]);
 
-  useEffect(() => {
-    if (isLocked !== null) {
-      fetchTasks();
-      unlockTask();
-    }
-  }, [isLocked, unlockTask, fetchTasks]);
-
-  function fetchTasks() {
+  const fetchTasks = useCallback(() => {
     if (selectedteam?.id) {
       dispatch(startLoading());
       taskService
@@ -61,7 +54,14 @@ function TasksPage() {
     } else {
       navigate(-1);
     }
-  }
+  }, [selectedteam?.id, dispatch, taskService, navigate]);
+
+  useEffect(() => {
+    if (isLocked !== null) {
+      fetchTasks();
+      unlockTask();
+    }
+  }, [isLocked, unlockTask, fetchTasks]);
 
   function handleTaskCreationState() {
     setEnableCreateTask(!enableCreateTask);
@@ -75,7 +75,7 @@ function TasksPage() {
     if (selectedteam?.id && !selectedTask) {
       fetchTasks();
     }
-  }, [selectedTask, selectedteam, selectedTask]);
+  }, [selectedTask, selectedteam, selectedTask, fetchTasks]);
 
   return (
     <div className="task-page-container">
