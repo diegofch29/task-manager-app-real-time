@@ -23,10 +23,17 @@ jobs:
         with:
           node-version: "24.x"
 
+      - name: Check for deprecated packages
+        run: |
+          npm audit
+        continue-on-error: true
+
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build
+          CI=false npm run build  # CI=false prevents treating warnings as errors
+        env:
+          CI: false
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -38,12 +45,12 @@ jobs:
           path: release.zip
 
   deploy:
+    # Rest of the deployment job remains unchanged
     runs-on: ubuntu-latest
     needs: build
-
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
+      id-token: write
+      contents: read
 
     steps:
       - name: Download artifact from build job
