@@ -33,6 +33,7 @@ jobs:
           npm cache clean --force
           rm -rf node_modules package-lock.json
           npm install
+          npm install react-scripts
           CI=false npm run build  # CI=false prevents treating warnings as errors
         env:
           CI: false
