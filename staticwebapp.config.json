@@ -11,6 +11,9 @@
     },
     {
       "route": "/HR/tasks"
+    },
+    {
+      "route": "Development/tasks"
     }
   ]
 }
