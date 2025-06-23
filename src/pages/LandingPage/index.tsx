@@ -13,13 +13,13 @@ function LandingPage() {
     { id: "4", name: "HR", color: "#B83B5E", icon: "diversity_3" },
   ];
   const dispatch = useDispatch();
-  const configService = new ConfigService();
 
   useEffect(() => {
+    const configService = new ConfigService();
     configService.GetStatusList().then((statusList) => {
       dispatch(setStatusList(statusList));
     });
-  }, [configService, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="landing-container">

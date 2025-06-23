@@ -17,7 +17,6 @@ import { useTaskLockSignalR } from "../../hooks/useTaskLockSignalR";
 
 function TasksPage() {
   const dispatch = useDispatch();
-  const taskService = new TaskService();
   const selectedteam = useSelector(
     (state: RootState) => state.team.currentTeam
   );
@@ -41,6 +40,7 @@ function TasksPage() {
   }, [lockError]);
 
   const fetchTasks = useCallback(() => {
+    const taskService = new TaskService();
     if (selectedteam?.id) {
       dispatch(startLoading());
       taskService
@@ -54,7 +54,7 @@ function TasksPage() {
     } else {
       navigate(-1);
     }
-  }, [selectedteam?.id, dispatch, taskService, navigate]);
+  }, [selectedteam?.id, dispatch, navigate]);
 
   useEffect(() => {
     if (isLocked !== null) {
@@ -75,7 +75,7 @@ function TasksPage() {
     if (selectedteam?.id && !selectedTask) {
       fetchTasks();
     }
-  }, [selectedTask, selectedteam, selectedTask, fetchTasks]);
+  }, [selectedTask, selectedteam, fetchTasks]);
 
   return (
     <div className="task-page-container">
