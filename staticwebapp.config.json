@@ -1,7 +1,10 @@
 {
   "routes": [
     {
-      "route": "/Development/tasks"
+      "route": "/Development/tasks",
+      "methods": [
+        "get"
+      ]
     },
     {
       "route": "/Marketing/tasks"
