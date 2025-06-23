@@ -113,6 +113,18 @@ Una aplicación web moderna para la gestión de tareas desarrollada con React y 
   - Mejor práctica recomendada por la comunidad React
   - Integración nativa con Jest
 
+### Cobertura de Pruebas
+
+El proyecto incluye pruebas unitarias para:
+- **Componentes**: Pruebas de renderizado y comportamiento de UI
+- **Reducers**: Pruebas de lógica de estado con Redux
+- **Integración**: Pruebas de la aplicación completa
+
+Ejecutar pruebas:
+```bash
+npm test
+```
+
 ### Arquitectura de Carpetas
 
 ```
