@@ -191,10 +191,7 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
         }
       >
         <Textarea
-          multiline
           rows={3}
-          resizable={false}
-          type="text"
           name="description"
           value={updatedTask?.description}
           onChange={(_, newValue) =>
@@ -217,7 +214,6 @@ function TaskEditCard({ task, fetchTasks, dismiss }: props) {
         >
           <Dropdown
             defaultValue={updatedTask?.status?.name}
-            classname="status-dropdown"
             onOptionSelect={onOptionSelect}
           >
             {(statusList ?? []).map((status) => (

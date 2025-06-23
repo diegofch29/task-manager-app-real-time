@@ -74,7 +74,6 @@ function TaskViewCard({ task, fetchTasks }: props) {
               {"edit"}
             </span>
           }
-          alt="Edit Task"
           onClick={handleTaskSelected}
         />
         <Button
@@ -84,7 +83,6 @@ function TaskViewCard({ task, fetchTasks }: props) {
               {"Delete"}
             </span>
           }
-          alt="Delete Task"
           onClick={handleDeletetask}
         />
       </div>
