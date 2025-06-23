@@ -58,20 +58,19 @@ function TasksPage() {
     } else {
       navigate(-1);
     }
-  }, [selectedteam?.id, dispatch]);
+  }, [selectedteam?.id, dispatch, navigate]);
 
   useEffect(() => {
-    console.log("TasksPage useEffect called");
-    if (selectedteam?.id) {
+    if (selectedteam?.id && tasks.length === 0) {
       fetchTasks();
-    } else {
+    } else if (!selectedteam?.id) {
       navigate(-1);
     }
-  }, [selectedteam?.id, isLocked, fetchTasks]);
+  }, [selectedteam?.id, isLocked, fetchTasks, navigate]);
 
   useEffect(() => {
     if (isLocked) {
-      setEnableCreateTask(false);
+      fetchTasks();
       unlockTask();
     }
   }, [isLocked, fetchTasks, unlockTask]);
