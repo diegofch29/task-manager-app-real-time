@@ -38,8 +38,7 @@ jobs:
         run: |
           mkdir deployment-package
           cp server.js deployment-package/
-          cp package.json deployment-package/package.json
-          cp web.config deployment-package/
+          cp package*.json deployment-package/
           cp -r build deployment-package/
           cd deployment-package && zip -r ../release.zip .
 
@@ -73,7 +72,7 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6F19826E7C8142A6B014FC9A6995806B }}
 
       - name: Install production dependencies
-        run: npm install --omit=dev --no-audit
+        run: npm ci --only=production
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
