@@ -73,7 +73,7 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6F19826E7C8142A6B014FC9A6995806B }}
 
       - name: Install production dependencies
-        run: npm ci --omit=dev --no-audit
+        run: npm install --omit=dev --no-audit
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
