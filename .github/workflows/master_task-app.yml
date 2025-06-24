@@ -40,7 +40,11 @@ jobs:
           cp server.js deployment-package/
           cp package*.json deployment-package/
           cp -r build deployment-package/
-          cd deployment-package && zip -r ../release.zip .
+          # Install production dependencies in deployment package
+          cd deployment-package
+          npm install --only=production --prefer-offline --no-audit --progress=false
+          cd ..
+          zip -r release.zip deployment-package/
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -71,13 +75,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2FAD66320610483481BBCDCC90BC6C46 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6F19826E7C8142A6B014FC9A6995806B }}
 
-      - name: Install production dependencies
-        run: npm ci --only=production
-
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "task-app"
           slot-name: "Production"
-          package: .
+          package: deployment-package
