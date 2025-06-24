@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir deployment-package
           cp server.js deployment-package/
-          cp package.production.json deployment-package/package.json
+          cp package.json deployment-package/package.json
           cp web.config deployment-package/
           cp -r build deployment-package/
           cd deployment-package && zip -r ../release.zip .
